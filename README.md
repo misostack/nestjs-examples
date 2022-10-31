@@ -3,6 +3,7 @@
 Nestjs tips and tricks, the copy and paste solutions
 
 - [001 TypeORM custom repository ](./001-typeorm-custom-repository/)
+- [Nestjs data validation and transformation tutorial](./002-validate-user-input/)
 
 ## Tools
 
