@@ -146,3 +146,28 @@ My proposal look like this
   }
 },
 ```
+
+Okie, I don't talk anymore, I will show you the code.
+As mentioned above, we need to install 2 packages:
+
+```bash
+npm install class-validator class-transformer --save
+```
+
+Let's write some tests with class-transformer and class-validator to see what they can do
+
+**Class-transformer common usecases**
+
+1. All common data types:
+
+- string
+- number
+- boolean
+- object
+- array
+- date
+
+2. Exclude and Expose fields
+
+- Specific fields for exposing/excluding
+- Group fields for exposing

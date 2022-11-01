@@ -1,0 +1,44 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "002ValidateUserInput:Jest:Debug",
+      "cwd": "${workspaceRoot}/002-validate-user-input",
+      "program": "${workspaceFolder}/002-validate-user-input/node_modules/jest/bin/jest.js",
+      "args": ["${fileBasenameNoExtension}"],
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "002ValidateUserInput:Debug:File",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["--nolazy", "-r", "ts-node/register/transpile-only"],
+      "args": ["${fileDirname}/${fileBasename}"],
+      "cwd": "${workspaceRoot}/002-validate-user-input",
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": ["<node_internals>/**", "node_modules/**"]
+    },
+    {
+      "name": "002-validate-user-input:Debug API",
+      "type": "node",
+      "cwd": "${workspaceRoot}/002-validate-user-input",
+      "program": "./src/main.ts",
+      "runtimeArgs": [
+        "-r",
+        "ts-node/register",
+        "-r",
+        "tsconfig-paths/register"
+      ],
+      "console": "integratedTerminal",
+      "request": "launch",
+      "skipFiles": ["<node_internals>/**"],
+      "outFiles": ["${workspaceFolder}/**/*.js", "!**/node_modules/**"]
+    }
+  ]
+}
