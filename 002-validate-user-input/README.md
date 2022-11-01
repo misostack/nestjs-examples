@@ -171,3 +171,8 @@ Let's write some tests with class-transformer and class-validator to see what th
 
 - Specific fields for exposing/excluding
 - Group fields for exposing
+
+**Class validator**
+
+- Primitive type
+- Regex

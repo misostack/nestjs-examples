@@ -1,3 +1,4 @@
+import { dateIsValid } from '../../helpers';
 import 'reflect-metadata';
 import {
   Type,
@@ -15,8 +16,10 @@ import {
   Matches,
   validate,
   IsNumber,
+  IsDate,
 } from 'class-validator';
 import { ValidatorOptions } from '@nestjs/common/interfaces/external/validator-options.interface';
+import { IsValidDate } from '../../decorators/validators.decorator';
 
 // test
 class HelloGroupDto {
@@ -69,7 +72,10 @@ class ProgrammingLanguageDto {
   @MinLength(3)
   @IsNotEmpty()
   name: string;
-  @Matches(/\d{4}-\d{2}-\d{2}/)
+  @IsValidDate({
+    message: '$property is not valid',
+  })
+  @Matches(/\d{2}-\d{2}-\d{4}/)
   @IsNotEmpty()
   publishedYear: string; // YYYY-MM-DD
   @Transform((authorIds) => {
@@ -97,7 +103,7 @@ class ProgrammingLanguageDto {
 const programmingLanguagePayload = {
   //   id: '1',
   name: 'C++',
-  publishedYear: '1985-01-01',
+  publishedYear: '29-02-2020',
   authors: [1, '3', Symbol(2)],
 };
 
@@ -105,7 +111,6 @@ const programmingLanguage = plainToInstance(
   ProgrammingLanguageDto,
   programmingLanguagePayload,
 );
-
 // let's validate programminglanguage
 const validatorOptions: ValidatorOptions = {
   skipMissingProperties: false,
@@ -127,3 +132,6 @@ const validatorOptions: ValidatorOptions = {
 // console.log(authorIds);
 
 // console.log(JSON.stringify(instanceToPlain(programmingLanguage)));
+
+const d = new Date('1985-02-29');
+console.log(dateIsValid('1985-02-29'));
